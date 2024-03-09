@@ -1,0 +1,116 @@
+body {
+	margin: 16px 8px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+}
+
+div[style*="display: flex"] {
+	column-gap: 10px;
+}
+
+td {
+	padding: 2px 4px;
+}
+
+td:first-child {
+	text-align: right;
+}
+
+tr {
+	transition: box-shadow 0.5s;
+	border-radius: 4px;
+}
+
+.flexbox {
+	display: flex;
+	column-gap: 10px;
+	align-items: center;
+	margin: 4px 0;
+}
+
+.wordButton:hover {
+	cursor: pointer;
+}
+
+.answers {
+	padding: 0 20px;
+}
+
+.answerLine {
+	width: 100%;
+	height: 24px;
+	border-bottom: 1px solid black;
+}
+
+.answers > * {
+    margin-top: 8px;
+}
+
+img {
+	width: 60%;
+}
+
+#pageLeft, #pageRight {
+	position: fixed;
+	height: 100vh;
+	width: 48px;
+	background-color: grey;
+	z-index: 10;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 36px;
+	font-weight: bold;
+	transition: filter 0.5s;
+}
+
+#pageLeft *, #pageRight * {
+	transform: scaleY(2.5);
+}
+
+#pageLeft:hover, #pageRight:hover {
+	filter: brightness(0.5);
+	cursor: pointer;
+}
+
+#pageLeft {
+	top: 0;
+	left: 0;
+	background: linear-gradient(90deg, rgba(136, 136, 136, 0.9) 0%, rgba(136, 136, 136, 0.4) 50%, rgba(136, 136, 136, 0) 100%);
+}
+
+#pageLeft:hover * {
+	animation: shiftLeft 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) 0.2s infinite alternate both;
+}
+
+#pageRight {
+	top: 0;
+	right: 0;
+	background: linear-gradient(270deg, rgba(136, 136, 136, 0.9) 0%, rgba(136, 136, 136, 0.4) 50%, rgba(136, 136, 136, 0) 100%);
+}
+
+#pageRight:hover * {
+	animation: shiftRight 0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000) 0.2s infinite alternate both;
+}
+
+@keyframes shiftLeft {
+	0% {transform: translateX(0) scaleY(2.5);}
+	100% {transform: translateX(-5px) scaleY(2.5);}
+}
+
+@keyframes shiftRight {
+	0% {transform: translateX(0) scaleY(2.5);}
+	100% {transform: translateX(5px) scaleY(2.5);}
+}
+
+@media print {
+	div {
+		break-inside: avoid;
+	}
+
+	#pageLeft, #pageRight, #pageLeft *, #pageRight * {
+		display: none !important;
+	}
+}
